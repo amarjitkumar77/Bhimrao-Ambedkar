@@ -1,1 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Babasaheb Bhimrao Ambedkar</title>
+<meta name="description" content="The life and legacy of Dr. B. R. Ambedkar in 20 sections. English and Hindi.">
+
+<!-- Fonts (optional: the page falls back to system fonts when offline) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Serif+Devanagari:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+
+<style>
+/* ==========================================================
+   BACKGROUND IMAGES (keep the "images" folder next to this file)
+   images/ambedkar.jpg          -> portrait shown on the home section
+   images/jai-bhim-poster.jpg   -> poster behind the whole page and the last section
+   ========================================================== */
+
+   
+   
+:root{
+  --img-portrait:url("images/ambedkar.jpg");
+  --img-poster:url("images/jai-bhim-poster.jpg");
+
+  --ink:#071642;
+  --navy:#0A1F5C;
+  --panel:rgba(17,43,120,.72);
+  --line:#2A4BA0;
+  --cream:#F5F2EA;
+  --mute:#B9C6EC;
+  --gold:#F2B90F;
+  --head:'Libre Baskerville','Noto Serif Devanagari',Georgia,serif;
+  --body:'Source Sans 3','Noto Sans Devanagari',Arial,sans-serif;
+  --hdr:68px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 12px)}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);font-size:18px;line-height:1.65;overflow-x:hidden}
+html[lang="hi"] body{line-height:1.8}
+html[lang="hi"] h1,html[lang="hi"] h2,html[lang="hi"] h3{line-height:1.4}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+img,svg{max-width:100%}
+
+/* full-page faint photo behind everything */
+.page-photo{position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(7,22,66,.8),rgba(7,22,66,.9)),var(--img-poster) center top/cover no-repeat}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:50;height:var(--hdr);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 clamp(12px,3vw,32px);background:rgba(7,22,66,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none}
+.brand svg{flex:none;width:38px;height:38px;color:var(--gold)}
+.brand span{font-family:var(--head);font-weight:700;font-size:clamp(.95rem,2.2vw,1.3rem);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tools{display:flex;align-items:center;gap:10px;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:8px 20px;border-radius:999px;border:1px solid var(--line);background:rgba(17,43,120,.55);cursor:pointer;font-weight:600;text-decoration:none;transition:background .2s,transform .2s}
+.btn:hover{background:var(--line)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+.btn.gold:hover{background:#ffd04a}
+.btn:active{transform:scale(.97)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;cursor:pointer;min-height:42px;padding:6px 14px;font-weight:700}
+.lang button[aria-pressed="true"]{background:var(--gold);color:var(--navy)}
+.burger{display:inline-block;width:20px;height:14px;position:relative}
+.burger i{position:absolute;left:0;right:0;height:2.5px;border-radius:2px;background:currentColor}
+.burger i:nth-child(1){top:0}.burger i:nth-child(2){top:6px}.burger i:nth-child(3){top:12px}
+.progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--gold);z-index:60}
+
+/* ---------- sections ---------- */
+section{position:relative;padding:clamp(64px,10vw,110px) clamp(16px,5vw,64px);overflow:hidden}
+section.alt{background:rgba(10,31,92,.5)}
+section:not(.alt):not(.hero){background:rgba(7,22,66,.3)}
+.box{position:relative;z-index:1;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(20px,3vw,34px)}
+.eb{margin:0;font-size:.95rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h2{margin:6px 0 0;font-family:var(--head);font-weight:700;font-size:clamp(1.9rem,4.8vw,3.3rem);line-height:1.25;text-wrap:balance}
+.lead{margin:0;font-size:clamp(1.15rem,2.2vw,1.55rem);line-height:1.65;color:#e1e8fb;max-width:62ch}
+.muted{color:var(--mute)}
+.scene{position:absolute;pointer-events:none;color:var(--gold);opacity:.12;z-index:0}
+.scene svg{display:block;width:100%;height:auto}
+.scene.sq{right:-8%;bottom:-6%;width:min(64vw,640px)}
+.scene.wide{left:0;right:0;bottom:0}
+.chakra{animation:spin 140s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ---------- hero (home) ---------- */
+.hero{min-height:calc(100vh - var(--hdr));display:flex;align-items:center;padding-block:clamp(48px,8vw,90px);background:radial-gradient(900px 500px at 80% 10%,#17358f,transparent 60%),var(--ink)}
+.hero::before{content:"";position:absolute;top:0;bottom:0;right:0;width:min(54vw,700px);background:var(--img-portrait) center top/cover no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 48%);mask-image:linear-gradient(to right,transparent 0,#000 48%);opacity:.92;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,22,66,.55) 0%,rgba(7,22,66,0) 60%);z-index:0}
+#jay{background:linear-gradient(rgba(7,22,66,.55),rgba(7,22,66,.86)),var(--img-poster) center 25%/cover no-repeat}
+.hero .box{gap:clamp(18px,2.4vw,28px)}
+.hero h1{margin:0;font-family:var(--head);font-weight:700;font-size:clamp(2.2rem,6.4vw,4.8rem);line-height:1.2;text-wrap:balance;max-width:16ch}
+.yrs{margin:0;color:var(--mute);font-size:1.25rem;letter-spacing:.08em}
+.pills{display:flex;flex-wrap:wrap;gap:12px}
+.pills span{background:var(--gold);color:var(--navy);font-weight:700;border-radius:999px;padding:6px 24px;font-size:clamp(1rem,2vw,1.35rem)}
+.pills.small span{background:var(--navy);color:var(--cream);border:1px solid var(--line);font-size:1rem;padding:4px 18px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero .chakra-big{position:absolute;left:-12%;top:50%;width:min(50vw,560px);transform:translateY(-50%);color:var(--gold);opacity:.1;z-index:0;pointer-events:none;transition:transform .2s ease-out}
+.hero .chakra-big svg{display:block;width:100%}
+
+.tl{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:clamp(16px,3vw,28px);max-width:760px;backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:14px}
+.tl h3{margin:0;font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.tl-out{display:flex;gap:clamp(14px,3vw,28px);align-items:flex-start;min-height:92px}
+.tl-year{font-family:var(--head);font-weight:700;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.1;color:var(--gold);font-variant-numeric:tabular-nums;min-width:4ch}
+.tl-ev{font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.55}
+.tl input[type=range]{width:100%;accent-color:var(--gold);height:32px;cursor:pointer}
+.tl-jump{display:flex;flex-wrap:wrap;gap:8px}
+.tl-jump button{min-height:38px;padding:4px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;cursor:pointer;font-weight:600;font-variant-numeric:tabular-nums}
+.tl-jump button:hover{background:var(--line)}
+.scroll-hint{display:inline-flex;align-items:center;gap:10px;color:var(--mute);font-size:.95rem}
+.scroll-hint i{width:22px;height:34px;border:2px solid var(--mute);border-radius:12px;position:relative}
+.scroll-hint i::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--gold);animation:wheel 1.6s infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
+
+/* ---------- cards / rows ---------- */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
+.card{display:flex;flex-direction:column;gap:6px;min-width:0;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 26px;backdrop-filter:blur(6px);transition:transform .25s,border-color .25s}
+.card span{display:block}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card .big{font-family:var(--head);font-weight:700;font-size:2.1rem;line-height:1.3;color:var(--gold)}
+.card .k{font-weight:700;font-size:.95rem;color:var(--gold);letter-spacing:.06em}
+.card .v{font-weight:700;font-size:1.35rem;line-height:1.5}
+.card .s{color:var(--mute);font-size:1.02rem;line-height:1.6}
+.card.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.card.gold .k,.card.gold .s,.card.gold .big{color:var(--navy)}
+button.card{cursor:pointer;width:100%}
+.card .more{display:none;margin-top:6px;padding-top:10px;border-top:1px dashed var(--line);color:#e1e8fb;font-size:1rem}
+.card .hint{font-size:.88rem;color:var(--gold);font-weight:700}
+.card.open .more{display:block}
+.card.open .hint{display:none}
+.rows{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(6px);overflow:hidden}
+.row{display:flex;align-items:center;gap:clamp(14px,3vw,36px);padding:16px clamp(16px,3vw,32px);border-bottom:1px solid rgba(42,75,160,.7);transition:background .2s}
+.row:last-child{border-bottom:0}
+.row:hover{background:rgba(42,75,160,.35)}
+.rk{flex:none;min-width:5.2ch;font-family:var(--head);font-weight:700;font-size:clamp(1.3rem,2.8vw,1.9rem);color:var(--gold);font-variant-numeric:tabular-nums}
+.rv{min-width:0;font-size:clamp(1.05rem,2.1vw,1.35rem);line-height:1.6}
+.split{display:grid;gap:32px;grid-template-columns:3fr 2fr;align-items:start}
+.stats{display:flex;flex-direction:column;gap:14px}
+.stat{display:flex;align-items:baseline;gap:20px;background:var(--navy);border:1px solid var(--line);border-radius:16px;padding:14px 26px}
+.stat .num{font-family:var(--head);font-weight:700;font-size:2.3rem;color:var(--gold);font-variant-numeric:tabular-nums;min-width:4.2ch}
+.motto{display:flex;flex-direction:column;gap:16px}
+.mrow{display:flex;align-items:center;gap:clamp(14px,3vw,32px);background:var(--navy);border:1px solid var(--line);border-radius:20px;padding:18px clamp(18px,3vw,36px);transition:transform .25s,background .25s,color .25s}
+.mrow:hover{transform:translateX(8px);background:var(--gold);color:var(--navy)}
+.mrow:hover .ms{color:var(--navy)}
+.mw{font-family:var(--head);font-weight:700;font-size:clamp(1.7rem,4.6vw,3.2rem);line-height:1.3;min-width:0}
+.ms{margin-left:auto;max-width:24ch;color:var(--mute);font-size:1.05rem;text-align:right}
+.duo{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
+.arrow{display:flex;align-items:center;color:var(--gold)}
+.arrow svg{width:64px;height:40px}
+.date{font-family:var(--head);font-weight:700;font-size:clamp(1.6rem,3.8vw,2.7rem);line-height:1.3}
+.bigyear{font-family:var(--head);font-weight:700;font-size:clamp(3.6rem,13vw,8rem);line-height:1.1;color:var(--gold)}
+.mahad{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,5vw,64px);align-items:center}
+.quote{border-left:6px solid var(--gold);padding:4px 0 4px 24px;font-size:clamp(1.05rem,2.1vw,1.35rem);line-height:1.7;margin:0 0 16px}
+.with-book{display:grid;grid-template-columns:1fr 260px;gap:32px;align-items:center}
+.with-book svg{width:100%;height:auto;color:var(--gold)}
+.jay{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.jay .w{margin:0;font-family:var(--head);font-weight:700;font-size:clamp(2.6rem,9vw,6rem);line-height:1.2}
+.jay .w:nth-of-type(3){color:var(--gold)}
+.jaybox{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:10px}
+.float{position:fixed;z-index:80;pointer-events:none;font-family:var(--head);font-weight:700;color:var(--gold);font-size:1.5rem;animation:rise 1.4s ease-out forwards}
+@keyframes rise{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-120px)}}
+
+/* ---------- footer ---------- */
+footer{background:#050f33;border-top:1px solid var(--line);padding:clamp(40px,6vw,64px) clamp(16px,5vw,64px) 28px}
+.foot{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
+.foot h3{margin:0 0 6px;font-family:var(--head);font-size:1.35rem}
+.foot p{margin:0}
+.social{display:flex;flex-wrap:wrap;gap:12px}
+.social a{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:8px 20px;border-radius:999px;border:1px solid var(--line);background:rgba(17,43,120,.55);text-decoration:none;font-weight:700;transition:background .2s,transform .2s}
+.social a:hover{background:var(--gold);color:var(--navy);transform:translateY(-3px)}
+.social svg{width:22px;height:22px;flex:none}
+.copy{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--mute);font-size:.95rem}
+
+/* ---------- menu drawer ---------- */
+.menu{position:fixed;inset:0;z-index:70;background:rgba(3,10,36,.72);display:flex;justify-content:flex-end}
+.menu[hidden]{display:none}
+.panel{width:min(560px,100%);height:100%;background:var(--navy);border-left:1px solid var(--line);padding:18px 16px;overflow-y:auto;display:flex;flex-direction:column;gap:14px;animation:slidein .3s ease-out}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+.panel header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.panel h3{margin:0;font-family:var(--head);font-size:1.3rem}
+.mlist{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mi{display:flex;align-items:center;gap:12px;min-width:0;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(17,43,120,.55);text-decoration:none;font-weight:600;line-height:1.4;transition:background .2s,border-color .2s}
+.mi:hover{background:var(--line)}
+.mi .n{flex:none;font-variant-numeric:tabular-nums;font-weight:700;color:var(--gold);min-width:2ch}
+.mi.cur{border-color:var(--gold);background:rgba(242,185,15,.14)}
+
+.totop{position:fixed;right:18px;bottom:18px;z-index:55;width:48px;height:48px;border-radius:50%;border:0;background:var(--gold);color:var(--navy);cursor:pointer;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{transform:translateY(-3px)}
+.totop svg{width:22px;height:22px}
+
+@media (max-width:760px){
+  body{font-size:17px}
+  .hero::before{width:100%;opacity:.3;-webkit-mask-image:none;mask-image:none}
+  .hero::after{background:rgba(7,22,66,.45)}
+  .split,.with-book,.mahad,.duo{grid-template-columns:1fr}
+  .arrow{justify-content:center;transform:rotate(90deg)}
+  .mlist{grid-template-columns:1fr}
+  .ms{display:none}
+  .with-book svg{max-width:200px}
+  .brand span{max-width:34vw}
+  .btn.gold .lbl{display:none}
+  .btn.gold{padding:8px 16px}
+  .lang button{padding:6px 10px}
+}
+@media (max-width:420px){.brand span{display:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+<div class="page-photo" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ================= HEADER ================= -->
+<header class="top">
+  <a class="brand" href="#home" aria-label="Home">
+    <svg viewBox="0 0 640 640" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round"><circle cx="320" cy="320" r="296" stroke-width="40"/><path d="M320 40V284M320 356V600M40 320H284M356 320H600M122 122L248 248M392 392L518 518M518 122L392 248M248 392L122 518"/></g><circle cx="320" cy="320" r="48" fill="currentColor"/></svg>
+    <span data-en="Babasaheb Bhimrao Ambedkar" data-hi="बाबासाहेब भीमराव अम्बेडकर">Babasaheb Bhimrao Ambedkar</span>
+  </a>
+    <div class="logo">
+            <span class="logo-icon"> bhimrao Ambedkar
+         </span></span>
+            <span></span>
+        </div>
+ <div class="tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="hi" aria-pressed="false">हिंदी</button>
+    </div>
+   <button class="btn gold" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span> 
+        
+            
+        
+        
+      <span class="lbl" data-en="Menu" data-hi="मेनू">Menu</span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= MENU ================= -->
+<nav class="menu" id="menu" hidden aria-label="Sections">
+  <div class="panel">
+    <header>
+      <h3 data-en="All sections" data-hi="सभी खंड">All sections</h3>
+      <button class="btn" id="menuClose" type="button" data-en="Close" data-hi="बंद करें">Close</button>
+    </header>
+    <div class="mlist" id="mlist"></div>
+  </div>
+</nav>
+<img src="ambedkar.jpg"alt="image ">
+
+
+<!-- ================= PAGE CONTENT (built by JavaScript) ================= -->
+<main id="main"></main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="footer">
+  <div class="foot">
+    <div class="foot-top">
+      <div>
+          <video width="300" controls>
+        <source src="InShot_20261008_155109066.mp4" type="video/mp4">
+        आपका ब्राउज़र वीडियो टैग को सपोर्ट नहीं करता है।
+    </video>
+    
+        <h3 data-en="Babasaheb Bhimrao Ambedkar" data-hi="बाबासाहेब भीमराव अम्बेडकर">Babasaheb Bhimrao Ambedkar</h3>
+        <img src=""
+        <p class="muted" data-en="Educate · Organise · Agitate" data-hi="शिक्षित बनो · संगठित रहो · संघर्ष करो">Educate · Organise · Agitate</p>
+      </div>
+      <div>
+        <h3 data-en="Follow us" data-hi="हमें फ़ॉलो करें">Follow us</h3>
+        <div class="social">
+          <a id="link-youtube" href="https://www.youtube.com/@bhimrao_ambedkar-A" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2C.5 9.1.5 12 .5 12s0 2.9.5 4.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-4.8.5-4.8s0-2.9-.5-4.8zM9.7 15.5v-7l6 3.5-6 3.5z"/></svg>
+            YouTube
+          </a>
+          <a id="link-instagram" href="https://www.instagram.com/jaybhimgreat_68?stkn=MWFsZjJmY2JyaDNqZg==" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+          <a id="link-facebook" href="https://www.facebook.com/profile.php?id=61591663343197" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.4h-3.3V8.3c0-1 .4-1.7 1.8-1.7h1.6V3.5c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.8H7.4v3.4h2.8V22h3.3z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+    <img src="jai-bhim-poster.jpg"alt="image">
+    <div class="copy">
+      <span data-en="Jai Bhim · Jai Bharat · Jai Samvidhan" data-hi="जय भीम · जय भारत · जय संविधान">Jai Bhim · Jai Bharat · Jai Samvidhan</span>
+      <span data-en="Made with respect for Dr. B. R. Ambedkar." data-hi="डॉ. बी. आर. आम्बेडकर के प्रति सम्मान के साथ बनाया गया।">Made with respect for Dr. B. R. Ambedkar.</span>
+    </div>
+    
+  </div>
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function(){
+'use strict';
+document.documentElement.classList.add('js');
+
+/* ==========================================================
+   LANGUAGE  (English by default, remembered in the browser)
+   ========================================================== */
+var lang='en';
+try{var sv=localStorage.getItem('ambedkar-lang');if(sv==='hi'||sv==='en')lang=sv;}catch(e){}
+function B(en,hi){return {en:en,hi:hi};}
+function t(x){return (x&&typeof x==='object')?x[lang]:x;}
+var $=function(s){return document.querySelector(s);};
+
+/* ==========================================================
+   CONTENT
+   ========================================================== */
+var EVENTS=[
+ [1891,B('Born on 14 April at the Mhow cantonment, Madhya Pradesh.','14 अप्रैल को महू छावनी (मध्य प्रदेश) में जन्म।')],
+ [1907,B('Passed the matriculation examination.','मैट्रिक की परीक्षा पास की।')],
+ [1912,B('Graduated (B.A.) from Elphinstone College, Mumbai.','एल्फिन्स्टन कॉलेज, मुंबई से बी.ए. किया।')],
+ [1915,B('M.A. from Columbia University, USA.','कोलंबिया विश्वविद्यालय, अमेरिका से एम.ए.।')],
+ [1920,B("Launched the newspaper 'Mooknayak'.","'मूकनायक' पत्र का प्रकाशन शुरू किया।")],
+ [1921,B('M.Sc. from the London School of Economics.','लंदन स्कूल ऑफ इकोनॉमिक्स से एम.एससी.।')],
+ [1922,B("Called to the Bar at Gray's Inn, London.",'ग्रेज़ इन, लंदन से बैरिस्टर बने।')],
+ [1923,B("D.Sc. awarded; 'The Problem of the Rupee' published.","डी.एससी. मिली; 'द प्रॉब्लम ऑफ द रुपी' प्रकाशित हुई।")],
+ [1924,B('Founded the Bahishkrit Hitakarini Sabha.','बहिष्कृत हितकारिणी सभा की स्थापना की।')],
+ [1927,B('Led the Mahad Satyagraha; Ph.D. from Columbia University.','महाड़ सत्याग्रह का नेतृत्व किया; कोलंबिया से पीएच.डी.।')],
+ [1930,B('Kalaram Temple Satyagraha at Nashik.','नासिक में कालाराम मंदिर सत्याग्रह।')],
+ [1932,B('The Poona Pact, signed at Yerwada.','येरवडा में पूना पैक्ट पर हस्ताक्षर।')],
+ [1936,B("Founded the Independent Labour Party; 'Annihilation of Caste' published.","स्वतंत्र मजदूर पार्टी की स्थापना; 'जाति का उच्छेद' प्रकाशित।")],
+ [1942,B("Became Labour Member of the Viceroy's Executive Council.",'वायसराय की कार्यकारी परिषद में श्रम सदस्य बने।')],
+ [1946,B('Elected to the Constituent Assembly.','संविधान सभा के सदस्य चुने गए।')],
+ [1947,B('Became independent India’s first Law Minister and Chairman of the Drafting Committee.','स्वतंत्र भारत के पहले कानून मंत्री और प्रारूप समिति के अध्यक्ष बने।')],
+ [1949,B('Constitution adopted on 26 November.','26 नवंबर को संविधान अंगीकृत हुआ।')],
+ [1950,B('Constitution came into force on 26 January.','26 जनवरी को संविधान लागू हुआ।')],
+ [1951,B('Resigned as Law Minister over the Hindu Code Bill.','हिंदू कोड बिल पर कानून मंत्री पद से इस्तीफ़ा दिया।')],
+ [1956,B('Embraced Buddhism on 14 October; Mahaparinirvan on 6 December.','14 अक्टूबर को बौद्ध धम्म अपनाया; 6 दिसंबर को महापरिनिर्वाण।')]
+];
+var JUMPS=[1891,1927,1932,1950,1956];
+var year=1891;
+
+/* ---- helpers that build HTML ---- */
+function head(s){return '<div class="reveal"><p class="eb">'+t(s.eb)+'</p><h2>'+t(s.title)+'</h2></div>';}
+function card(c){
+  var inner=(c.big?'<span class="big">'+t(c.big)+'</span>':'')+(c.k?'<span class="k">'+t(c.k)+'</span>':'')+(c.v?'<span class="v">'+t(c.v)+'</span>':'')+(c.s?'<span class="s">'+t(c.s)+'</span>':'');
+  var cls='card reveal'+(c.gold?' gold':'');
+  if(c.more)return '<button type="button" class="'+cls+' tap" aria-expanded="false">'+inner+'<span class="more">'+t(c.more)+'</span><span class="hint">'+(lang==='hi'?'और जानें +':'Tap for more +')+'</span></button>';
+  return '<div class="'+cls+'">'+inner+'</div>';
+}
+function grid(items,cls){return '<div class="grid '+(cls||'')+'">'+items.map(card).join('')+'</div>';}
+function rows(items){return '<div class="rows reveal">'+items.map(function(r){return '<div class="row"><span class="rk">'+t(r[0])+'</span><span class="rv">'+t(r[1])+'</span></div>';}).join('')+'</div>';}
+var ARROW='<span class="arrow" aria-hidden="true"><svg viewBox="0 0 64 40" fill="currentColor"><path d="M0 14h38V0l26 20-26 20V26H0z"/></svg></span>';
+
+/* ---- decorative scenes ---- */
+function scene(kind){
+  var s='',i;
+  if(kind==='chakra'){
+    for(i=0;i<24;i++)s+='<line x1="320" y1="40" x2="320" y2="284" transform="rotate('+(i*15)+' 320 320)"/>';
+    return '<div class="scene sq"><svg class="chakra" viewBox="0 0 640 640" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"><circle cx="320" cy="320" r="296" stroke-width="12"/>'+s+'</g><circle cx="320" cy="320" r="36" fill="currentColor"/></svg></div>';
+  }
+  if(kind==='rays'){
+    for(i=0;i<=18;i++){var a=Math.PI*(1+i/18);s+='<line x1="400" y1="640" x2="'+(400+900*Math.cos(a)).toFixed(0)+'" y2="'+(640+900*Math.sin(a)).toFixed(0)+'"/>';}
+    return '<div class="scene wide"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g stroke="currentColor" stroke-width="4" fill="none">'+s+'</g><circle cx="400" cy="400" r="120" fill="currentColor" opacity=".5"/></svg></div>';
+  }
+  if(kind==='waves'){
+    for(i=0;i<5;i++){var y=80+i*55;s+='<path d="M0 '+y+' Q100 '+(y-34)+' 200 '+y+' T400 '+y+' T600 '+y+' T800 '+y+'"/>';}
+    return '<div class="scene wide"><svg viewBox="0 0 800 340" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round">'+s+'</g></svg></div>';
+  }
+  if(kind==='book'){
+    return '<div class="scene sq"><svg viewBox="0 0 360 300" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"><path d="M180 60C120 28 60 28 16 48V250C60 230 120 230 180 262Z"/><path d="M180 60C240 28 300 28 344 48V250C300 230 240 230 180 262Z"/><path d="M180 60V262"/><path d="M48 90l92 14M48 124l92 14M48 158l92 14M220 104l92-14M220 138l92-14M220 172l92-14" stroke-width="6"/></g></svg></div>';
+  }
+  for(i=0;i<6;i++){var x=70+i*120;s+='<rect x="'+(x-18)+'" y="96" width="36" height="230"/><rect x="'+(x-34)+'" y="76" width="68" height="22"/><rect x="'+(x-34)+'" y="326" width="68" height="22"/>';}
+  return '<div class="scene wide"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="currentColor"><rect x="16" y="40" width="768" height="26"/>'+s+'<rect x="0" y="352" width="800" height="48"/></g></svg></div>';
+}
+
+/* ---- the 19 story sections that follow the home page ---- */
+var SECTIONS=[
+{id:'intro',n:B('Introduction','परिचय'),eb:B('Introduction','परिचय'),title:B('Who was Babasaheb?','बाबासाहेब कौन थे?'),sc:'rays',
+ html:function(){return '<div class="split"><div style="display:flex;flex-direction:column;gap:22px" class="reveal"><p class="lead">'+t(B('Dr. Bhimrao Ramji Ambedkar, respectfully called <b>Babasaheb</b>, was a great thinker, jurist, economist and social reformer of modern India.','डॉ. भीमराव आम्बेडकर, जिन्हें सम्मान से <b>बाबासाहेब</b> कहा जाता है, आधुनिक भारत के महान चिंतक, विधिवेत्ता, अर्थशास्त्री और समाज सुधारक थे।'))+'</p><div class="pills small"><span>'+t(B('Jurist','विधिवेत्ता'))+'</span><span>'+t(B('Economist','अर्थशास्त्री'))+'</span><span>'+t(B('Social reformer','समाज सुधारक'))+'</span><span>'+t(B('Architect of the Constitution','संविधान शिल्पकार'))+'</span></div></div><div class="stats reveal"><div class="stat"><span class="num count" data-to="1891">1891</span><span>'+t(B('Born','जन्म'))+'</span></div><div class="stat"><span class="num count" data-to="1956">1956</span><span>'+t(B('Mahaparinirvan','महापरिनिर्वाण'))+'</span></div><div class="stat"><span class="num count" data-to="1990">1990</span><span>'+t(B('Bharat Ratna (posthumous)','भारत रत्न (मरणोपरांत)'))+'</span></div></div></div>';}},
+
+{id:'birth',n:B('Birth and family','जन्म और परिवार'),eb:B('Birth and family','जन्म और परिवार'),title:B('Birth and family','जन्म और परिवार'),sc:'rays',
+ html:function(){return grid([
+  {k:B('Born','जन्म'),v:B('14 April 1891','14 अप्रैल 1891'),s:B('Mhow cantonment (Madhya Pradesh)','महू छावनी (मध्य प्रदेश)')},
+  {k:B('Father','पिता'),v:B('Ramji Maloji Sakpal','रामजी मालोजी सकपाल'),s:B('Subedar in the army','सेना में सूबेदार')},
+  {k:B('Mother','माता'),v:B('Bhimabai','भीमाबाई'),s:B("Bhimrao's mother",'भीमराव की माता')},
+  {k:B('Place in the family','परिवार में स्थान'),v:B('14th child','14वीं संतान'),s:B("Childhood name 'Bhiva'","बचपन का नाम 'भीवा'")}],'two');}},
+
+{id:'childhood',n:B('Childhood struggles','बचपन और संघर्ष'),eb:B('Childhood','बचपन'),title:B('Childhood and struggle','बचपन और संघर्ष'),sc:'book',
+ html:function(){return rows([
+  ['1',B('Faced caste discrimination at school: made to sit apart and not allowed even to touch the water.','स्कूल में जातिगत भेदभाव झेला; अलग बैठाया जाता था और पानी छूने तक की अनुमति नहीं थी।')],
+  ['2',B("While studying in Satara, a teacher's affection gave him the surname 'Ambedkar'.","सतारा में पढ़ाई के दौरान शिक्षक के स्नेह से उन्हें 'आम्बेडकर' उपनाम मिला।")],
+  ['3',B('Passed the matriculation examination in 1907, a major achievement at that time.','1907 में मैट्रिक की परीक्षा पास की, जो उस समय बड़ी उपलब्धि मानी जाती थी।')],
+  ['4',B('Despite every hardship, he never gave up on education.','हर कठिनाई के बावजूद उन्होंने शिक्षा का रास्ता नहीं छोड़ा।')]]);}},
+
+{id:'education',n:B('Education','शिक्षा'),eb:B('Education','शिक्षा'),title:B('A journey of higher learning','उच्च शिक्षा का सफ़र'),sc:'book',
+ html:function(){return grid([
+  {big:'1912',v:B('B.A.','बी.ए.'),s:B('Elphinstone College, Mumbai','एल्फिन्स्टन कॉलेज, मुंबई'),more:B('Graduated from the University of Bombay in economics and political science.','मुंबई विश्वविद्यालय से राजनीति विज्ञान और अर्थशास्त्र में स्नातक।')},
+  {big:'1915',v:B('M.A.','एम.ए.'),s:B('Columbia University, USA','कोलंबिया विश्वविद्यालय, अमेरिका'),more:B('Went to America on a scholarship from Maharaja Sayajirao Gaekwad of Baroda.','बड़ौदा नरेश सयाजीराव गायकवाड़ की छात्रवृत्ति से अमेरिका पढ़ने गए।')},
+  {big:'1921',v:B('M.Sc.','एम.एससी.'),s:B('London School of Economics','लंदन स्कूल ऑफ इकोनॉमिक्स'),more:B('Advanced study of economics in London.','लंदन में अर्थशास्त्र का उच्च अध्ययन।')},
+  {big:'1922',v:B('Barrister-at-Law','बैरिस्टर-एट-लॉ'),s:B("Gray's Inn, London",'ग्रेज़ इन, लंदन'),more:B('Completed legal training and qualified to practise law.','कानून की पढ़ाई पूरी कर वकालत की योग्यता हासिल की।')},
+  {big:'1923',v:B('D.Sc.','डी.एससी.'),s:B('London School of Economics','लंदन स्कूल ऑफ इकोनॉमिक्स'),more:B("His book 'The Problem of the Rupee' was published this year.","इसी वर्ष उनका ग्रंथ 'द प्रॉब्लम ऑफ द रुपी' प्रकाशित हुआ।")},
+  {big:'1927',v:B('Ph.D.','पीएच.डी.'),s:B('Columbia University','कोलंबिया विश्वविद्यालय'),more:B('Research topic: the evolution of provincial finance in British India.','शोध का विषय: ब्रिटिश भारत में प्रांतीय वित्त का विकास।')}]);}},
+
+{id:'motto',n:B('The motto','मूलमंत्र'),eb:B('The motto','मूलमंत्र'),title:B("Babasaheb's motto",'बाबासाहेब का मूलमंत्र'),sc:'chakra',
+ html:function(){return '<div class="motto reveal"><div class="mrow"><span class="mw">'+t(B('Educate','शिक्षित बनो'))+'</span><span class="ms">'+t(B('Education builds awareness and self-respect','शिक्षा से जागरूकता और आत्मसम्मान'))+'</span></div><div class="mrow"><span class="mw">'+t(B('Organise','संगठित रहो'))+'</span><span class="ms">'+t(B('Organisation builds collective strength','संगठन से सामूहिक शक्ति'))+'</span></div><div class="mrow"><span class="mw">'+t(B('Agitate','संघर्ष करो'))+'</span><span class="ms">'+t(B('Struggle wins rights','संघर्ष से अधिकारों की प्राप्ति'))+'</span></div></div>';}},
+
+{id:'movements',n:B('Social movements','सामाजिक आंदोलन'),eb:B('Social movements','सामाजिक आंदोलन'),title:B('Movements for social justice','सामाजिक न्याय के आंदोलन'),sc:'waves',
+ html:function(){return grid([
+  {big:'1920',v:B("'Mooknayak' newspaper","'मूकनायक' पत्र का प्रकाशन"),s:B('Became the voice of the voiceless','बेआवाज़ लोगों की आवाज़ बना')},
+  {big:'1924',v:B('Bahishkrit Hitakarini Sabha','बहिष्कृत हितकारिणी सभा'),s:B('An organisation for education and social uplift','शिक्षा और सामाजिक उत्थान का संगठन')},
+  {big:'1927',v:B('Mahad Satyagraha','महाड़ सत्याग्रह'),s:B('Equal right to public water','सार्वजनिक जल पर सबका अधिकार')},
+  {big:'1930',v:B('Kalaram Temple Satyagraha','कालाराम मंदिर सत्याग्रह'),s:B('The struggle for temple entry at Nashik','नासिक में मंदिर प्रवेश का आंदोलन')}],'two');}},
+
+{id:'mahad',n:B('Mahad Satyagraha','महाड़ सत्याग्रह'),eb:B('Mahad Satyagraha','महाड़ सत्याग्रह'),title:B('Mahad Satyagraha','महाड़ सत्याग्रह'),sc:'waves',
+ html:function(){return '<div class="mahad"><div class="reveal"><div class="bigyear">1927</div><p class="lead muted" style="margin:0">'+t(B('20 March · Chavdar Tank','20 मार्च · चवदार तालाब'))+'</p></div><div class="reveal"><p class="quote">'+t(B('At the Chavdar Tank in Mahad (Maharashtra), the right of everyone to drink water was asserted.','महाड़ (महाराष्ट्र) के चवदार तालाब से सबके लिए पानी पीने का अधिकार माँगा गया।'))+'</p><p class="quote">'+t(B('The movement was a declaration of human dignity and equality.','यह आंदोलन मानव गरिमा और समानता की घोषणा था।'))+'</p><p class="quote" style="margin:0">'+t(B('On 25 December 1927 the Manusmriti was burned, a symbol of protest against inequality.','25 दिसंबर 1927 को मनुस्मृति का दहन, असमानता के विरोध का प्रतीक।'))+'</p></div></div>';}},
+
+{id:'poona',n:B('Poona Pact','पूना पैक्ट'),eb:B('Poona Pact','पूना पैक्ट'),title:B('The Poona Pact (1932)','पूना पैक्ट (1932)'),sc:'pillars',
+ html:function(){return '<div class="duo">'+card({k:B('August 1932','अगस्त 1932'),v:B('Communal Award','कम्युनल अवार्ड'),s:B('The depressed classes were granted separate electorates.','दलित वर्गों को पृथक निर्वाचक मंडल का अधिकार मिला।')})+ARROW+card({gold:true,k:B('24 September 1932 · Yerwada','24 सितंबर 1932 · येरवडा'),v:B('Poona Pact','पूना पैक्ट'),s:B("After Gandhiji's fast, an agreement: reserved seats within the general electorate, raised from 71 to 148.",'गांधीजी के उपवास के बाद समझौता: सामान्य निर्वाचन में आरक्षित सीटें, 71 से बढ़कर 148।')})+'</div>';}},
+
+{id:'politics',n:B('Political life','राजनीतिक जीवन'),eb:B('Political life','राजनीतिक जीवन'),title:B('Political life','राजनीतिक जीवन'),sc:'pillars',
+ html:function(){return rows([
+  ['1936',B('Founded the Independent Labour Party','स्वतंत्र मजदूर पार्टी (Independent Labour Party) की स्थापना')],
+  ['1942',B('Founded the Scheduled Castes Federation','शेड्यूल्ड कास्ट्स फेडरेशन की स्थापना')],
+  ['1942–46',B("Labour Member of the Viceroy's Executive Council",'वायसराय की कार्यकारी परिषद में श्रम सदस्य')],
+  ['1946',B('Elected a member of the Constituent Assembly','संविधान सभा के सदस्य के रूप में चुने गए')]]);}},
+
+{id:'labour',n:B("Workers' rights",'श्रमिक अधिकार'),eb:B("Workers' rights",'श्रमिक अधिकार'),title:B("Rights of workers",'श्रमिकों के अधिकार'),sc:'rays',
+ html:function(){return grid([
+  {k:B('Working day','कार्य-दिवस'),v:B('The 8-hour working day','8 घंटे का कार्य-दिवस'),s:B('At the 1942 labour conference he pressed for an 8-hour day.','1942 के श्रम सम्मेलन में काम के घंटे 8 करने की पैरवी की।')},
+  {k:B('Women workers','महिला श्रमिक'),v:B('Protection for women workers','महिला श्रमिकों की सुरक्षा'),s:B('Worked for rights such as maternity benefit.','मातृत्व लाभ जैसे अधिकारों के पक्ष में काम किया।')},
+  {k:B('Employment','रोजगार'),v:B('Employment exchanges','रोजगार कार्यालय'),s:B('Played a role in starting employment exchanges.','एम्प्लॉयमेंट एक्सचेंज की शुरुआत में भूमिका निभाई।')}]);}},
+
+{id:'economy',n:B('Economic work','आर्थिक योगदान'),eb:B('Economic work','आर्थिक योगदान'),title:B('Babasaheb the economist','अर्थशास्त्री बाबासाहेब'),sc:'book',
+ html:function(){return grid([
+  {k:B('Book','ग्रंथ'),v:B('The Problem of the Rupee (1923)','द प्रॉब्लम ऑफ द रुपी (1923)'),s:B("A research work on the problems of Indian currency.",'भारतीय मुद्रा की समस्या पर शोध-ग्रंथ।')},
+  {k:B('Institution','संस्था'),v:B('Foundation of the Reserve Bank','रिज़र्व बैंक की नींव'),s:B('Ideas he placed before the Hilton Young Commission helped in setting up the RBI (1935).','हिल्टन यंग आयोग के सामने रखे विचार RBI (1935) की स्थापना में सहायक बने।')},
+  {k:B('Policy','नीति'),v:B('Water and power policy','जल और बिजली नीति'),s:B('Played a role in policy for multipurpose river projects such as the Damodar Valley and Hirakud.','दामोदर घाटी, हीराकुंड जैसी बहुउद्देशीय परियोजनाओं की नीति में भूमिका।')}]);}},
+
+{id:'drafting',n:B('Drafting the Constitution','संविधान निर्माण'),eb:B('The Constitution','संविधान'),title:B('Drafting the Constitution','संविधान निर्माण'),sc:'pillars',
+ html:function(){return grid([
+  {big:B('29 Aug 1947','29 अगस्त 1947'),s:B('Drafting Committee formed; Dr. Ambedkar became its Chairman.','प्रारूप समिति का गठन; डॉ. आम्बेडकर अध्यक्ष बने।')},
+  {big:B('7 members','7 सदस्य'),s:B('The committee had seven members in all.','समिति में कुल सात सदस्य थे।')},
+  {big:B('2 years 11 months 18 days','2 वर्ष 11 माह 18 दिन'),s:B('Time the Constituent Assembly took to frame the Constitution.','संविधान सभा को संविधान तैयार करने में लगा समय।')}])+'<div class="card reveal"><span class="v">'+t(B('Original Constitution: 395 Articles · 8 Schedules','मूल संविधान: 395 अनुच्छेद · 8 अनुसूचियाँ'))+'</span></div>';}},
+
+{id:'dates',n:B('Journey of the Constitution','संविधान की यात्रा'),eb:B('The Constitution','संविधान'),title:B('Jai Samvidhan','जय संविधान'),sc:'chakra',
+ html:function(){return '<div class="duo">'+card({gold:true,v:'<span class="date">'+t(B('26 November 1949','26 नवंबर 1949'))+'</span>',s:B('Constitution adopted · Constitution Day','संविधान अंगीकृत · संविधान दिवस')})+ARROW+card({gold:true,v:'<span class="date">'+t(B('26 January 1950','26 जनवरी 1950'))+'</span>',s:B('Constitution comes into force · Republic Day','संविधान लागू · गणतंत्र दिवस')})+'</div><p class="lead reveal">'+t(B('In his speech of 25 November 1949, Babasaheb stressed that political equality must be joined by social and economic equality.','25 नवंबर 1949 के भाषण में बाबासाहेब ने राजनीतिक समानता के साथ सामाजिक और आर्थिक समानता की ज़रूरत पर ज़ोर दिया।'))+'</p>';}},
+
+{id:'values',n:B('Constitutional values','संविधान के मूल्य'),eb:B('Constitutional values','संविधान के मूल्य'),title:B('Four pillars of the Constitution','संविधान के चार स्तंभ'),sc:'chakra',
+ html:function(){return grid([
+  {k:'01',v:B('Justice','न्याय'),s:B('Social, economic and political justice','सामाजिक, आर्थिक और राजनीतिक न्याय')},
+  {k:'02',v:B('Liberty','स्वतंत्रता'),s:B('Of thought, expression, belief and worship','विचार, अभिव्यक्ति, विश्वास और उपासना की स्वतंत्रता')},
+  {k:'03',v:B('Equality','समता'),s:B('Of status and of opportunity','प्रतिष्ठा और अवसर की समानता')},
+  {k:'04',v:B('Fraternity','बंधुता'),s:B('Dignity of the individual and unity of the nation','व्यक्ति की गरिमा और राष्ट्र की एकता')}],'two');}},
+
+{id:'hindu-code',n:B("Women's rights",'हिंदू कोड बिल'),eb:B("Women's rights",'महिला अधिकार'),title:B('Women’s rights and the Hindu Code Bill','महिला अधिकार और हिंदू कोड बिल'),sc:'rays',
+ html:function(){return rows([
+  ['1',B('Right of women to property and inheritance','महिलाओं को संपत्ति और उत्तराधिकार का अधिकार')],
+  ['2',B('Equal rights in marriage and divorce','विवाह और तलाक में समान अधिकार')],
+  ['3',B('Resigned as Law Minister in 1951 when the bill stalled','1951 में बिल अटकने पर कानून मंत्री पद से इस्तीफ़ा')],
+  ['4',B('Its reforms were later passed as separate laws in 1955–56','बाद में 1955–56 में इसके सुधार अलग-अलग कानूनों के रूप में पारित हुए')]]);}},
+
+{id:'dhamma',n:B('Embracing Buddhism','धम्म दीक्षा'),eb:B('Buddhist conversion','बौद्ध धम्म दीक्षा'),title:B('Dhamma Deeksha','धम्म दीक्षा'),sc:'chakra',
+ html:function(){return '<div class="reveal"><div class="bigyear" style="font-size:clamp(2.2rem,7vw,4.8rem)">'+t(B('14 October 1956','14 अक्टूबर 1956'))+'</div><p class="lead muted" style="margin:0">'+t(B('Deekshabhoomi, Nagpur','दीक्षाभूमि, नागपुर'))+'</p></div>'+grid([
+  {v:B('Lakhs of followers','लाखों अनुयायी'),s:B('Embraced Buddhism along with Babasaheb.','बाबासाहेब के साथ बौद्ध धम्म अपनाया।')},
+  {v:B('22 Vows','22 प्रतिज्ञाएँ'),s:B('A pledge to a new life and equality.','नए जीवन और समानता का संकल्प।')},
+  {v:B('Prajna · Karuna · Samata','प्रज्ञा · करुणा · समता'),s:B('Wisdom, compassion and equality: the guiding values of the Dhamma.','धम्म के मार्गदर्शक मूल्य।')}]);}},
+
+{id:'books',n:B('Books','साहित्य'),eb:B('Writings','साहित्य'),title:B('Books and writings','लेखन और ग्रंथ'),sc:'book',
+ html:function(){
+  var R=[['1936',B('Annihilation of Caste','जाति का उच्छेद <span class="muted">(Annihilation of Caste)</span>')],['1923',B('The Problem of the Rupee','द प्रॉब्लम ऑफ द रुपी')],['1946',B('Who Were the Shudras?','शूद्र कौन थे? <span class="muted">(Who Were the Shudras?)</span>')],['1957',B('The Buddha and His Dhamma <span class="muted">(published posthumously)</span>','बुद्ध और उनका धम्म <span class="muted">(मरणोपरांत प्रकाशित)</span>')]];
+  return '<div class="with-book"><div class="rows reveal">'+R.map(function(r){return '<div class="row"><span class="rk">'+r[0]+'</span><span class="rv">'+t(r[1])+'</span></div>';}).join('')+'</div><svg class="reveal" viewBox="0 0 360 300" role="img" aria-label="Open book"><g fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"><path d="M180 60C120 28 60 28 16 48V250C60 230 120 230 180 262Z"/><path d="M180 60C240 28 300 28 344 48V250C300 230 240 230 180 262Z"/><path d="M180 60V262"/><path d="M48 90l92 14M48 124l92 14M48 158l92 14M220 104l92-14M220 138l92-14M220 172l92-14" stroke-width="6"/></g></svg></div>';}},
+
+{id:'legacy',n:B('Legacy and honours','विरासत और सम्मान'),eb:B('Legacy','विरासत'),title:B('Legacy and honours','विरासत और सम्मान'),sc:'rays',
+ html:function(){return grid([
+  {gold:true,v:B('Bharat Ratna · 1990','भारत रत्न · 1990'),s:B('The highest civilian honour, awarded posthumously','मरणोपरांत सर्वोच्च नागरिक सम्मान')},
+  {gold:true,v:B('14 April','14 अप्रैल'),s:B('Ambedkar Jayanti','आम्बेडकर जयंती')},
+  {gold:true,v:B('26 November','26 नवंबर'),s:B('Constitution Day','संविधान दिवस')},
+  {gold:true,v:B('6 December','6 दिसंबर'),s:B('Mahaparinirvan Diwas · Chaityabhoomi, Mumbai','महापरिनिर्वाण दिवस · चैत्यभूमि, मुंबई')}],'two');}},
+
+{id:'jay',n:B('Jai Bhim · Jai Bharat · Jai Samvidhan','जय भीम · जय भारत · जय संविधान'),eb:B('Thank you','धन्यवाद'),title:B('','') ,sc:'chakra',
+ html:function(){return '<div class="jay reveal"><p class="eb">'+t(B('Thank you','धन्यवाद'))+'</p><p class="w">'+t(B('Jai Bhim','जय भीम'))+'</p><p class="w">'+t(B('Jai Bharat','जय भारत'))+'</p><p class="w">'+t(B('Jai Samvidhan','जय संविधान'))+'</p><p class="lead muted" style="margin:0">'+t(B("Carry Babasaheb's ideas into your life.",'बाबासाहेब के विचारों को जीवन में अपनाएँ।'))+'</p><div class="jaybox"><button class="btn gold" id="jayBtn" type="button">'+t(B('Say Jai Bhim','जय भीम बोलो'))+'</button><span id="jayCount" class="muted"></span></div></div>';}}
+];
+
+var ABOUT={id:'about',n:B('About Babasaheb','बाबासाहेब के बारे में'),eb:B('About Babasaheb','बाबासाहेब के बारे में'),title:B('About Babasaheb','बाबासाहेब के बारे में'),sc:'book'};
+
+/* ==========================================================
+   RENDER
+   ========================================================== */
+var jc=0;
+function hero(){
+  var ev=currentEvent();
+  return '<section class="hero" id="home"><div class="chakra-big" id="chakraBig" aria-hidden="true"><svg viewBox="0 0 640 640"><g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"><circle cx="320" cy="320" r="296" stroke-width="12"/>'+(function(){var s='';for(var i=0;i<24;i++)s+='<line x1="320" y1="40" x2="320" y2="284" transform="rotate('+(i*15)+' 320 320)"/>';return s;})()+'</g><circle cx="320" cy="320" r="36" fill="currentColor"/></svg></div>'+
+  '<div class="box"><p class="eb reveal">'+t(B('A tribute to Babasaheb','बाबासाहेब को शत-शत नमन'))+'</p>'+
+  '<h1 class="reveal">'+t(B('Dr. Bhimrao Ramji Ambedkar','डॉ. भीमराव रामजी आम्बेडकर'))+'</h1>'+
+  '<p class="lead reveal">'+t(B('Chief architect of the Indian Constitution, jurist, economist and fighter for equality.','भारतीय संविधान के मुख्य शिल्पकार, विधिवेत्ता, अर्थशास्त्री और समानता के योद्धा।'))+'</p>'+
+  '<p class="yrs reveal">1891 – 1956</p>'+
+  '<div class="pills reveal"><span>'+t(B('Jai Bhim','जय भीम'))+'</span><span>'+t(B('Jai Bharat','जय भारत'))+'</span><span>'+t(B('Jai Samvidhan','जय संविधान'))+'</span></div>'+
+  '<div class="cta reveal"><a class="btn gold" href="#intro">'+t(B('Explore his life','उनके जीवन को जानें'))+'</a><button class="btn" id="heroJay" type="button">'+t(B('Say Jai Bhim','जय भीम बोलो'))+'</button></div>'+
+  '<div class="tl reveal"><h3>'+t(B('Travel through his life: drag the slider','जीवन की यात्रा: स्लाइडर खींचें'))+'</h3>'+
+  '<div class="tl-out" aria-live="polite"><span class="tl-year" id="tlYear">'+ev[0]+'</span><span class="tl-ev" id="tlEv">'+t(ev[1])+'</span></div>'+
+  '<input type="range" id="tlRange" min="1891" max="1956" step="1" value="'+year+'" aria-label="'+t(B('Year','वर्ष'))+'">'+
+  '<div class="tl-jump">'+JUMPS.map(function(y){return '<button type="button" data-year="'+y+'">'+y+'</button>';}).join('')+'</div></div>'+
+  '<span class="scroll-hint reveal"><i aria-hidden="true"></i>'+t(B('Scroll down to read the full story','पूरी कहानी पढ़ने के लिए नीचे स्क्रॉल करें'))+'</span>'+
+  '</div></section>';
+}
+function aboutHTML(){
+  var A=ABOUT;
+  return '<section id="about"><div class="box">'+scene('book')+head(A)+
+  '<p class="lead reveal">'+t(B('Babasaheb Ambedkar rose from one of the harshest forms of discrimination to become one of the most highly educated people of his time and the chief architect of the Constitution of India. He gave a voice to the oppressed, fought for equal rights for everyone, and showed that education, organisation and struggle can change a society.','बाबासाहेब आम्बेडकर भेदभाव के सबसे कठोर रूपों से उठकर अपने समय के सबसे शिक्षित लोगों में से एक और भारतीय संविधान के मुख्य शिल्पकार बने। उन्होंने दबे-कुचले लोगों को आवाज़ दी, सबके लिए समान अधिकारों की लड़ाई लड़ी और दिखाया कि शिक्षा, संगठन और संघर्ष से समाज बदला जा सकता है।'))+'</p>'+
+  grid([
+   {k:B('Scholar','विद्वान'),v:B('Economist and jurist','अर्थशास्त्री और विधिवेत्ता'),s:B('Earned degrees from Columbia University and the London School of Economics in economics, law and political science.','कोलंबिया विश्वविद्यालय और लंदन स्कूल ऑफ इकोनॉमिक्स से अर्थशास्त्र, कानून और राजनीति विज्ञान में डिग्रियाँ हासिल कीं।')},
+   {k:B('Reformer','समाज सुधारक'),v:B('Fighter for equality','समानता के योद्धा'),s:B("Led the Mahad and Kalaram Temple Satyagrahas and published newspapers such as 'Mooknayak'.","महाड़ और कालाराम मंदिर सत्याग्रह का नेतृत्व किया और 'मूकनायक' जैसे पत्र निकाले।")},
+   {k:B('Law-maker','विधि-निर्माता'),v:B('Architect of the Constitution','संविधान के शिल्पकार'),s:B("Chairman of the Drafting Committee and independent India's first Law Minister.",'प्रारूप समिति के अध्यक्ष और स्वतंत्र भारत के पहले कानून मंत्री।')},
+   {k:B('Guide','मार्गदर्शक'),v:B('An inspiration to millions','करोड़ों के प्रेरणास्रोत'),s:B('Embraced Buddhism in 1956 with lakhs of followers. His ideas of justice, liberty, equality and fraternity still guide the nation.','1956 में लाखों अनुयायियों के साथ बौद्ध धम्म अपनाया। न्याय, स्वतंत्रता, समता और बंधुता के उनके विचार आज भी देश का मार्गदर्शन करते हैं।')}
+  ],'two')+
+  '</div></section>';
+}
+function sectionHTML(s,i){
+  var inner=(s.id==='jay')?s.html():head(s)+s.html();
+  return '<section id="'+s.id+'" class="'+(i%2?'alt':'')+'"><div class="box">'+scene(s.sc)+inner+'</div></section>';
+}
+function currentEvent(){var e=EVENTS[0];for(var i=0;i<EVENTS.length;i++){if(EVENTS[i][0]<=year)e=EVENTS[i];}return e;}
+
+var main=$('#main'),io=null;
+function render(){
+  var y=window.scrollY;
+  main.innerHTML=hero()+SECTIONS.map(sectionHTML).join('')+aboutHTML();
+  applyStatic();buildMenu();observe();updateJay();
+  window.scrollTo(0,y);
+  onScroll();
+}
+function applyStatic(){
+  document.documentElement.lang=lang;
+  document.title=lang==='hi'?'बाबासाहेब भीमराव अम्बेडकर':'Babasaheb Bhimrao Ambedkar';
+  document.querySelectorAll('[data-en]').forEach(function(el){el.textContent=el.dataset[lang];});
+  document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');});
+  $('#toTop').setAttribute('aria-label',lang==='hi'?'ऊपर जाएँ':'Back to top');
+}
+function buildMenu(){
+  var all=[{id:'home',n:B('Home','होम')}].concat(SECTIONS,[ABOUT]);
+  $('#mlist').innerHTML=all.map(function(s,i){
+    return '<a class="mi" href="#'+s.id+'" data-id="'+s.id+'"><span class="n">'+(i+1)+'</span><span>'+t(s.n)+'</span></a>';
+  }).join('');
+}
+function updateJay(){var el=$('#jayCount');if(el)el.textContent=(lang==='hi'?'अब तक '+jc+' बार':'So far: '+jc+' times');}
+
+/* reveal on scroll + counters */
+function observe(){
+  if(io)io.disconnect();
+  var els=main.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});counters();return;}
+  io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.querySelector&&e.target.querySelector('.count'))counters(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e);});
+}
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function counters(scope){
+  (scope||document).querySelectorAll('.count').forEach(function(el){
+    if(el.dataset.done)return;el.dataset.done='1';
+    var to=+el.dataset.to;if(reduce){el.textContent=to;return;}
+    var from=to-120,t0=null;
+    function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1100);el.textContent=Math.round(from+(to-from)*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+    el.textContent=from;requestAnimationFrame(step);
+  });
+}
+
+/* ==========================================================
+   EVENTS
+   ========================================================== */
+function setYear(v){
+  year=+v;var e=currentEvent();
+  var a=$('#tlYear'),b=$('#tlEv'),r=$('#tlRange');
+  if(a)a.textContent=e[0];if(b)b.textContent=t(e[1]);if(r&&+r.value!==year)r.value=year;
+}
+function jayFloat(btn){
+  jc++;updateJay();
+  if(reduce)return;
+  var r=btn.getBoundingClientRect(),f=document.createElement('span');
+  f.className='float';f.textContent=t([B('Jai Bhim','जय भीम'),B('Jai Bharat','जय भारत'),B('Jai Samvidhan','जय संविधान')][jc%3]);
+  f.style.left=(r.left+Math.random()*r.width*.8)+'px';f.style.top=(r.top-6)+'px';
+  document.body.appendChild(f);setTimeout(function(){f.remove();},1500);
+}
+main.addEventListener('input',function(e){if(e.target.id==='tlRange')setYear(e.target.value);});
+main.addEventListener('click',function(e){
+  var j=e.target.closest('[data-year]');if(j){setYear(j.dataset.year);return;}
+  var c=e.target.closest('button.tap');if(c){var o=c.classList.toggle('open');c.setAttribute('aria-expanded',o);return;}
+  var b=e.target.closest('#jayBtn,#heroJay');if(b)jayFloat(b);
+});
+
+/* language switch */
+document.querySelectorAll('.lang button').forEach(function(b){
+  b.addEventListener('click',function(){
+    if(lang===b.dataset.lang)return;
+    lang=b.dataset.lang;
+    try{localStorage.setItem('ambedkar-lang',lang);}catch(e){}
+    render();
+  });
+});
+
+/* menu */
+var menu=$('#menu'),menuBtn=$('#menuBtn');
+function openMenu(){menu.hidden=false;menuBtn.setAttribute('aria-expanded','true');var c=$('#mlist .cur')||$('#mlist .mi');if(c)c.focus();}
+function closeMenu(){if(menu.hidden)return;menu.hidden=true;menuBtn.setAttribute('aria-expanded','false');menuBtn.focus();}
+menuBtn.addEventListener('click',function(){menu.hidden?openMenu():closeMenu();});
+$('#menuClose').addEventListener('click',closeMenu);
+menu.addEventListener('click',function(e){
+  if(e.target===menu){closeMenu();return;}
+  if(e.target.closest('.mi')){menu.hidden=true;menuBtn.setAttribute('aria-expanded','false');}
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+
+/* scroll: progress bar, active menu item, back-to-top, hero parallax */
+var ticking=false;
+function onScroll(){
+  var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  $('#progress').style.width=(max>0?(window.scrollY/max*100):0)+'%';
+  $('#toTop').classList.toggle('show',window.scrollY>600);
+  var ids=['home'].concat(SECTIONS.map(function(s){return s.id;}),['about']),cur='home',line=window.scrollY+120;
+  ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=line)cur=id;});
+  document.querySelectorAll('#mlist .mi').forEach(function(a){a.classList.toggle('cur',a.dataset.id===cur);});
+  var cb=$('#chakraBig');if(cb&&!reduce)cb.style.transform='translateY(-50%) rotate('+(window.scrollY*0.15)+'deg)';
+  ticking=false;
+}
+window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
+$('#toTop').addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
+
+/* start */
+render();
+})();
+</script>
+</body>
+</html>
 
